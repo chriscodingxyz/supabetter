@@ -1,7 +1,7 @@
 import Link from 'next/link'
-import { Button } from '../ui/button'
-import { MetallicText } from '../typography/MetallicText'
-import { ThemeToggle } from '../theme/ThemeToggle'
+import { Button } from '@/components/ui/button'
+import { MetallicText } from '@/components/typography/MetallicText'
+import { ThemeToggle } from '@/components/theme/ThemeToggle'
 import { GITHUB_URL, SITE_NAME } from '@/lib/constants'
 import { auth } from '@/lib/auth'
 import { headers } from 'next/headers'
@@ -10,8 +10,6 @@ export default async function Header () {
   const session = await auth.api.getSession({
     headers: await headers()
   })
-
-  const isUserLoggedIn = session?.user !== null
 
   return (
     <header className='top-0 left-0 sticky z-50 w-full backdrop-blur-xl'>
@@ -27,7 +25,7 @@ export default async function Header () {
           </nav>
         </div>
         <div className='flex items-center'>
-          {isUserLoggedIn ? (
+          {session?.user ? (
             <Link href='/dashboard'>
               <Button variant='outline'>Dashboard</Button>
             </Link>

@@ -1,48 +1,3 @@
-// 'use client'
-
-// import React from 'react'
-
-// interface MetallicTextProps {
-//   children: React.ReactNode
-//   className?: string
-// }
-
-// export const MetallicText: React.FC<MetallicTextProps> = ({
-//   children,
-//   className = ''
-// }) => {
-//   return (
-//     <span
-//       className={`relative inline-block ${className}`}
-//       style={{
-//         background:
-//           'linear-gradient(135deg, #e6e6e6 0%, #d9d9d9 10%, #c4c4c4 20%, #b3b3b3 30%, #a6a6a6 40%, #939393 50%, #7c7c7c 60%, #8c8c8c 70%, #999999 80%, #b3b3b3 90%, #d9d9d9 100%)',
-//         backgroundSize: '200% 200%',
-//         animation: 'gradient-shift 5s ease infinite',
-//         WebkitBackgroundClip: 'text',
-//         WebkitTextFillColor: 'transparent',
-//         textShadow: '0px 0px 3px rgba(150, 150, 150, 0.3)',
-//         filter: 'drop-shadow(0 0 2px rgba(192, 192, 192, 0.6))'
-//       }}
-//     >
-//       {children}
-//       <style jsx>{`
-//         @keyframes gradient-shift {
-//           0% {
-//             background-position: 0% 50%;
-//           }
-//           50% {
-//             background-position: 100% 50%;
-//           }
-//           100% {
-//             background-position: 0% 50%;
-//           }
-//         }
-//       `}</style>
-//     </span>
-//   )
-// }
-
 'use client'
 
 import React from 'react'
@@ -55,6 +10,7 @@ export type GradientThemeKey =
   | 'chrome'
   | 'rainbow'
   | 'blue-steel'
+  | 'fire'
 export type MetallicTheme = GradientThemeKey | 'custom'
 
 // Props interface with new theme options
@@ -82,7 +38,8 @@ const gradientThemes: Record<GradientThemeKey, string> = {
   rainbow:
     'linear-gradient(135deg, #ff0000 0%, #ff8000 14%, #ffff00 28%, #00ff00 42%, #00ffff 56%, #0000ff 70%, #8000ff 84%, #ff00ff 100%)',
   'blue-steel':
-    'linear-gradient(135deg, #b3c5d7 0%, #95a8c1 10%, #8293ab 20%, #6f7e95 30%, #5d6c83 40%, #4c5a71 50%, #3c4961 60%, #4c5a71 70%, #5d6c83 80%, #8293ab 90%, #b3c5d7 100%)'
+    'linear-gradient(135deg, #b3c5d7 0%, #95a8c1 10%, #8293ab 20%, #6f7e95 30%, #5d6c83 40%, #4c5a71 50%, #3c4961 60%, #4c5a71 70%, #5d6c83 80%, #8293ab 90%, #b3c5d7 100%)',
+  fire: 'linear-gradient(135deg, #ff4500 0%, #ff6b00 10%, #ff8c00 20%, #ffa500 30%, #ffb84d 40%, #ffcc66 50%, #ffdd80 60%, #ffaa33 70%, #ff7700 80%, #ff5500 90%, #ff2200 100%)'
 }
 
 export const MetallicText: React.FC<MetallicTextProps> = ({

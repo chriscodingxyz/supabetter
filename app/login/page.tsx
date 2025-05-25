@@ -18,36 +18,25 @@ export default async function LoginPage () {
   }
 
   return (
-    <div>
-      <form
-        action={signInEmailAction}
-        // action={async (formData: FormData) => {
-        //   'use server'
-
-        //   const email = formData.get('email') as string
-        //   const password = formData.get('password') as string
-
-        //   try {
-        //     await auth.api.signInEmail({
-        //       body: {
-        //         email,
-        //         password
-        //       }
-        //     })
-        //   } catch (error: unknown) {
-        //     console.error('ERROR======>>>>', (error as Error)?.message)
-        //     redirect('/?message=woops')
-        //   }
-
-        //   return redirect('/dashboard?message=success')
-        // }}
-      >
-        <Input placeholder='Email' name='email' />
-        <Input placeholder='Password' name='password' />
-        <Button type='submit'>Login</Button>
+    <div className='flex-center-col min-h-screen gap-8 '>
+      <form action={signInEmailAction} className='flex flex-col gap-4'>
+        <h1 className='text-4xl font-bold'>Login</h1>
+        <Input placeholder='Email' name='email' required />
+        <Input
+          placeholder='Password'
+          name='password'
+          type='password'
+          required
+        />
+        <Button className='cursor-pointer' type='submit'>
+          Login
+        </Button>
       </form>
 
-      <Link href='/sign-up'>Sign Up</Link>
+      <Link className='text-xs' href='/sign-up'>
+        Don't have an account?{' '}
+        <span className='font-bold underline hover:no-underline'>Sign up</span>
+      </Link>
     </div>
   )
 }

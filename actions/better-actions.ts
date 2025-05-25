@@ -1,3 +1,5 @@
+'use server';
+
 import { auth } from '@/lib/auth'
 import { tryCatch } from '@/lib/utils'
 import logger from '@/utils/logger'
@@ -5,7 +7,6 @@ import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 
 export async function signInEmailAction (formData: FormData) {
-  'use server'
 
   const email = formData.get('email') as string
   const password = formData.get('password') as string
@@ -36,7 +37,6 @@ export async function signInEmailAction (formData: FormData) {
 }
 
 export async function signUpEmailAction (formData: FormData) {
-  'use server'
 
   const name = formData.get('name') as string
   const email = formData.get('email') as string
@@ -69,7 +69,6 @@ export async function signUpEmailAction (formData: FormData) {
 }
 
 export async function signOutAction () {
-  'use server'
 
   const [_, error] = await tryCatch(
     auth.api.signOut({
