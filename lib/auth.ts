@@ -24,8 +24,7 @@ export const auth = betterAuth({
   },
   emailVerification: {
     sendOnSignUp: true,
-    // expiresIn: 60 * 60, // 1 hour
-    expiresIn: 15, // 15 seconds
+    expiresIn: 60 * 60, // 1 hour
 
     //TODO: still need to think of a use case, say it auto signs in
     // but a hacker made the account, then this email comes to verify it
