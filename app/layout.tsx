@@ -15,6 +15,7 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import SonnerWrapper from '@/components/SonnerWrapper'
 import { SITE_NAME } from '@/lib/constants'
+import NavProgress from '@/components/layout/NavProgress'
 
 const silkscreen = Silkscreen({
   variable: '--font-silkscreen',
@@ -69,10 +70,14 @@ export default function RootLayout ({
           disableTransitionOnChange
         >
           <SonnerWrapper>
-            <Header />
-            <div className='flex-1 container max-w-5xl'>{children}</div>
-            <Footer />
-            {process.env.NODE_ENV === 'development' && <ViewportIndicator />}
+            <NavProgress>
+              <Header />
+              <div className='flex-1 container max-w-5xl pt-[60px]'>
+                {children}
+              </div>
+              <Footer />
+              {process.env.NODE_ENV === 'development' && <ViewportIndicator />}
+            </NavProgress>
           </SonnerWrapper>
         </ThemeProvider>
       </body>

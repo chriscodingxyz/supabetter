@@ -52,7 +52,7 @@ export default function SonnerWrapper ({
   return (
     <>
       {children}
-      <Toaster richColors />
+      <Toaster />
     </>
   )
 }

@@ -1,11 +1,13 @@
 'use client'
 
 import * as React from 'react'
-import { Moon, Sun } from 'lucide-react'
+// import { Moon, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
-import { Lightning } from '@phosphor-icons/react'
-
+// import { Lightning } from '@phosphor-icons/react'
 import { Button } from '@/components/ui/button'
+import { MoonIcon } from '@/components/ui/moon'
+import { SunIcon } from '@/components/ui/sun'
+import { SunMoonIcon } from '@/components/ui/sun-moon'
 
 export function ThemeToggle () {
   const { resolvedTheme, setTheme } = useTheme()
@@ -17,14 +19,19 @@ export function ThemeToggle () {
   }
 
   return (
-    <Button variant='ghost' onClick={toggleTheme}>
+    <Button
+      size='xs'
+      className='cursor-pointer'
+      variant='ghost'
+      title='Toggle theme'
+      onClick={toggleTheme}
+    >
       {!hasToggled ? (
-        // <Scale strokeWidth={2} className='h-[1.2rem] w-[1.2rem]' />
-        <Lightning size={32} />
+        <SunMoonIcon size={32} />
       ) : resolvedTheme === 'dark' ? (
-        <Moon strokeWidth={2} className='h-[1.2rem] w-[1.2rem]' />
+        <MoonIcon size={32} />
       ) : (
-        <Sun strokeWidth={2} className='h-[1.2rem] w-[1.2rem]' />
+        <SunIcon size={32} />
       )}
       <span className='sr-only'>Toggle theme</span>
     </Button>

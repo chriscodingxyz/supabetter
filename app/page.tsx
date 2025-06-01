@@ -19,22 +19,9 @@ import {
 } from '@/components/icons/svg/TechStack'
 import Image from 'next/image'
 import React from 'react'
+import Link from 'next/link'
 
 export default function Home () {
-  // const [copied, setCopied] = useState(false)
-
-  // const copyToClipboard = async () => {
-  //   try {
-  //     await navigator.clipboard.writeText(
-  //       'git clone https://github.com/chriscodingxyz/supabetter.git'
-  //     )
-  //     setCopied(true)
-  //     setTimeout(() => setCopied(false), 3000)
-  //   } catch (err) {
-  //     console.error('Failed to copy: ', err)
-  //   }
-  // }
-
   const featuresData = [
     {
       icon: <Zap />,
@@ -80,16 +67,24 @@ export default function Home () {
 
   return (
     <div className='bg-background relative flex flex-col'>
+      {/* Glowing gradient effect - optimized for mobile */}
+      <div className='fixed inset-0 pointer-events-none overflow-hidden select-none'>
+        {/* <div
+          className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[40rem] sm:max-w-[60rem] aspect-square bg-gradient-to-r from-red-500/20 via-purple-500/25 to-blue-500/20 blur-[120px] sm:blur-[160px] rounded-[50%] motion-safe:animate-pulse-slow'
+          style={{ willChange: 'transform' }}
+        ></div> */}
+      </div>
+
       {/* Hero Section */}
-      <section className='min-h-screen relative flex items-center'>
-        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 w-full'>
-          <div className='flex flex-col gap-8'>
+      <section className='min-h-[calc(100dvh-60px)] relative flex items-center overflow-hidden'>
+        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12 w-full relative z-10'>
+          <div className='flex flex-col gap-6 sm:gap-8'>
             {/* Main two-column content */}
-            <div className='grid grid-cols-1 lg:grid-cols-12 gap-16 sm:gap-20 lg:gap-12 items-center'>
+            <div className='grid grid-cols-1 lg:grid-cols-12 gap-12 sm:gap-16 lg:gap-12 items-center'>
               {/* Left Section - SKIP THE SETUP */}
               <div className='lg:col-span-6 relative'>
                 <div className='relative text-left'>
-                  <MetallicText className='relative z-10 text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tighter px-2'>
+                  <MetallicText className='relative z-10 text-4xl sm:text-5xl lg:text-7xl xl:text-8xl font-extrabold tracking-tighter px-2 transform-gpu'>
                     <div>SKIP</div>
                     <div>THE</div>
                     <div>SETUP</div>
@@ -99,7 +94,7 @@ export default function Home () {
                     alt='Mercury Figure'
                     width={100}
                     height={200}
-                    className='border border-primary absolute z-0 top-1/2 left-[20%] sm:left-[25%] -translate-x-1/2 -translate-y-1/2 h-[220px] sm:h-[280px] lg:h-[300px] w-auto opacity-40 grayscale'
+                    className='border border-primary absolute z-0 top-1/2 left-[20%] sm:left-[25%] -translate-x-1/2 -translate-y-1/2 h-[180px] sm:h-[280px] lg:h-[300px] w-auto opacity-40 grayscale select-none transform-gpu'
                   />
                 </div>
               </div>
@@ -107,11 +102,13 @@ export default function Home () {
               {/* Right Section - START THE BUILD */}
               <div className='lg:col-span-6 relative'>
                 <div className='relative text-right'>
-                  <MetallicText className='relative z-10 text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tighter px-2'>
-                    <div>START</div>
-                    <div>THE</div>
-                    <div>BUILD</div>
-                  </MetallicText>
+                  <Link href='/build'>
+                    <MetallicText className='relative z-10 text-4xl sm:text-5xl lg:text-7xl xl:text-8xl font-extrabold tracking-tighter px-2 transform-gpu'>
+                      <div>START</div>
+                      <div>THE</div>
+                      <div>BUILD</div>
+                    </MetallicText>
+                  </Link>
                   <Image
                     src='/cryptoadz.gif'
                     alt='Cryptoadz GIF Animation'
@@ -167,7 +164,7 @@ export default function Home () {
       </section>
 
       {/* Features Section */}
-      <section className='w-full bg-background/50 backdrop-blur-sm'>
+      {/* <section className='w-full bg-background/50 backdrop-blur-sm'>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20'>
           <div className='space-y-12'>
             <div className='flex flex-wrap justify-center gap-2'>
@@ -229,7 +226,7 @@ export default function Home () {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   )
 }
