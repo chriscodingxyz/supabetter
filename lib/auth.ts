@@ -6,7 +6,8 @@ import { db } from '@/db'
 import * as schema from '@/db/schemas/auth-schema'
 import { nextCookies } from 'better-auth/next-js'
 import logger from '@/utils/logger'
-import { sendEmailAction } from '@/actions/send-email.action'
+// import { sendEmailAction } from '@/actions/send-email.action'
+import { authEmails } from './resend'
 
 export const auth = betterAuth({
   database: drizzleAdapter(db, {
@@ -38,15 +39,16 @@ export const auth = betterAuth({
       logger.info('3. Token:', token)
       logger.info('4. Request:', request)
       // const link = new URL(url)
-      await sendEmailAction({
-        to: user.email!,
-        subject: 'Verify your email address',
-        meta: {
-          description:
-            'Please verify your email address to complete registration.',
-          link: String(url)
-        }
-      })
+      await authEmails.sendVerification(user.email!, url, user.name)
+      // await sendEmailAction({
+      //   to: user.email!,
+      //   subject: 'Verify your email address',
+      //   meta: {
+      //     description:
+      //       'Please verify your email address to complete registration.',
+      //     link: String(url)
+      //   }
+      // })
     }
   },
   account: {

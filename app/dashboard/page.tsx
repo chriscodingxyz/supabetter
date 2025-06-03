@@ -2,13 +2,11 @@ import React from 'react'
 import { auth } from '@/lib/auth'
 import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
-// import { HoloTicket } from '@/components/HoloTicket'
 import SessionStats from '@/components/SessionStats'
 import SpinnerActionButton from '@/components/buttons/SpinnerActionButton'
 import { signOutAction } from '@/actions/better-actions'
-import { Button } from '@/components/ui/button'
-import { authClient } from '@/lib/auth-client'
 import SignOutClientButton from './SignOutClientButton'
+import logger from '@/utils/logger'
 
 export default async function DashboardPage () {
   const session = await auth.api.getSession({
@@ -16,8 +14,8 @@ export default async function DashboardPage () {
   })
 
   if (!session) {
-    console.log('🍒 User is not logged in')
-    return redirect('/sign-in?message=redireting from dashboard')
+    logger.info('🍒 User is not logged in')
+    return redirect('/sign-in?toast=Please sign in to access the dashboard')
   }
 
   return (
@@ -63,11 +61,6 @@ export default async function DashboardPage () {
       <SpinnerActionButton action={signOutAction}>Sign out</SpinnerActionButton>
 
       <SignOutClientButton />
-
-      {/* <HoloTicket
-        ticketImage='/holoticket/front2.png'
-        holographicImage='/holoticket/back2.png'
-      /> */}
     </div>
   )
 }

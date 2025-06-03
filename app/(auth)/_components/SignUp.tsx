@@ -43,7 +43,7 @@ export default function SignUp () {
   }
 
   return (
-    <Card className=' rounded-md rounded-t-none w-full sm:w-[420px]'>
+    <Card className='w-full sm:w-[420px]'>
       <CardHeader>
         <CardTitle>
           <MetallicText className='text-4xl font-bold'>Sign Up</MetallicText>
@@ -134,19 +134,23 @@ export default function SignUp () {
                 // ok so sign-in seems stupid place..BUT if this fails (verification token timed out)
                 // then it will  redirect to sign-in page, with the error
                 // otherwise sign-in will already have a redirect within it
-                callbackURL: '/sign-in', // A URL to redirect to after the user verifies their email (optional)
+                callbackURL: '/', // A URL to redirect to after the user verifies their email (optional) (this is AFTER they get sent to the sign-in page with the toast)
                 fetchOptions: {
                   onResponse: () => {
+                    alert('onResponse')
                     setLoading(false)
                   },
                   onRequest: () => {
+                    alert('onRequest')
                     setLoading(true)
                   },
                   onError: ctx => {
+                    alert('onError')
                     logger.error('Error signing up:', ctx.error)
-                    toast.error(ctx.error.message)
+                    toast.info(ctx.error.message)
                   },
                   onSuccess: ctx => {
+                    alert('onSuccess')
                     // this is on success of 'sign-up', before the email verification, but this should
                     // still redirect to sign-in page
                     logger.info('Success signing up:', ctx)

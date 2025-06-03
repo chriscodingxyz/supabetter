@@ -20,6 +20,7 @@ import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import { toast } from 'sonner'
 import { MetallicText } from '@/components/typography/MetallicText'
+import logger from '@/utils/logger'
 
 export default function SignIn () {
   const [email, setEmail] = useState('')
@@ -142,6 +143,7 @@ export default function SignIn () {
                           // toast.success('You have successfully logged in')
                         },
                         onError: ctx => {
+                          logger.error('Error signing in:', ctx.error)
                           toast.error(ctx.error.message)
                           setLoading(false) // Ensure loading is false on error
                         }

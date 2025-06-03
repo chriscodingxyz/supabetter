@@ -10,8 +10,10 @@ export default async function SignInPage () {
     headers: await headers()
   })
 
+  logger.info('viaSignInPage: Session:', session)
+
   if (session?.user) {
-    logger.info('User is already logged in')
+    logger.info('viaSignInPage: User is already logged in, redirecting')
     return redirect('/dashboard')
   }
 

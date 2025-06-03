@@ -15,7 +15,7 @@ export default async function Header () {
     headers: await headers()
   })
 
-  console.log('🍒 serverclient: session', session)
+  console.log('🍒 serverclient Header: session', session)
 
   // const { data: session } = authClient.useSession()
 

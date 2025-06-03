@@ -20,6 +20,7 @@ import {
 import Image from 'next/image'
 import React from 'react'
 import Link from 'next/link'
+import ContactForm from './contact/ContactForm'
 
 export default function Home () {
   const featuresData = [
@@ -159,6 +160,10 @@ export default function Home () {
                 </span>
               </div>
             </div> */}
+            <div className=''>
+
+            <ContactForm className='container max-w-[420px]' />
+            </div>
           </div>
         </div>
       </section>
