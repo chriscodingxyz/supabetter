@@ -9,6 +9,8 @@ import { FingerprintIcon } from '../ui/fingerprint'
 import { auth } from '@/lib/auth'
 import { headers } from 'next/headers'
 import { Avatar, AvatarImage, AvatarFallback } from '../ui/avatar'
+import Image from 'next/image'
+import IconSupabetterLogo from '@/components/icons/svg/IconSupabetterLogo'
 
 export default async function Header () {
   const session = await auth.api.getSession({
@@ -43,7 +45,8 @@ export default async function Header () {
       className={`top-0 left-0 fixed z-100 w-full backdrop-blur-sm`}
     >
       <div className='flex h-[50px] items-center justify-between px-4'>
-        <div className='flex items-center gap-4'>
+        <div className='flex items-center gap-2'>
+          <IconSupabetterLogo className='size-7 text-foreground' />
           <Link href='/' className='text-lg font-bold tracking-tight'>
             <MetallicText>{SITE_NAME}</MetallicText>
           </Link>
@@ -68,7 +71,7 @@ export default async function Header () {
               <Button
                 className='cursor-pointer'
                 title='Login humanoid'
-                variant='default'
+                variant='outline'
                 size='xs'
               >
                 Login
