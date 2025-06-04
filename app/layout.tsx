@@ -72,9 +72,9 @@ export default function RootLayout ({
           <SonnerWrapper>
             <NavProgress>
               <Header />
-              <div className='flex-1 container max-w-5xl pt-[60px]'>
+              <main className='flex-1'>
                 {children}
-              </div>
+              </main>
               <Footer />
               {process.env.NODE_ENV === 'development' && <ViewportIndicator />}
             </NavProgress>
