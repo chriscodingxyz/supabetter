@@ -1,9 +1,9 @@
-import { z } from "zod"
+import { z } from 'zod/v4'
 
 export const ContactFormSchemaZ = z.object({
-  name: z.string().min(8, "Name must be at least 8 characters long"),
-  senderEmail: z.string().email("Valid email is required"),
-  message: z.string().min(8, "Message must be at least 8 characters long")
-});
+  name: z.string().min(8, 'Name must be at least 8 characters long'),
+  senderEmail: z.email('Valid email is required'),
+  message: z.string().min(8, 'Message must be at least 8 characters long')
+})
 
-export type ContactFormSchemaT = z.infer<typeof ContactFormSchemaZ>;
+export type ContactFormSchemaT = z.infer<typeof ContactFormSchemaZ>

@@ -16,29 +16,31 @@ export const ShadowButton = React.forwardRef<
     ref
   ) => {
     return (
-      <div className='relative group'>
-        {/* Shadow element (stays fixed) */}
+      <div className='relative group inline-block'>
+        {/* Shadow element */}
         <div
-          className='absolute w-full h-full z-0 bg-primary group-hover:opacity-0 transition-opacity duration-200'
+          className='absolute inset-0 bg-primary transition-opacity duration-200 group-hover:opacity-80'
           style={{
-            top: `${shadowOffset}px`,
-            left: `${shadowOffset}px`
+            transform: `translate(${shadowOffset}px, ${shadowOffset}px)`,
+            zIndex: 0
           }}
         />
 
-        {/* Button element (moves on hover) */}
+        {/* Button element */}
         <Button
+          className={cn(
+            'relative z-10',
+            'bg-background hover:bg-background text-primary',
+            'border-primary rounded-none',
+            'transition-transform duration-200 ease-out',
+            'group-hover:translate-x-1 group-hover:translate-y-1',
+            'font-medium',
+            className
+          )}
           style={{
             borderWidth: `${borderWidth}px`,
             borderStyle: 'solid'
           }}
-          className={cn(
-            'relative bg-background hover:bg-background text-primary rounded-none z-10 border-primary',
-            'transition-all duration-200 ease-in-out',
-            'group-hover:translate-y-1 group-hover:translate-x-1',
-            'cursor-pointer',
-            className
-          )}
           ref={ref}
           {...props}
         >

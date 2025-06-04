@@ -21,6 +21,7 @@ import Image from 'next/image'
 import React from 'react'
 import Link from 'next/link'
 import { ContactForm } from '@/components/forms/ContactForm'
+import { ShadowButton } from '@/components/buttons/ShadowButton'
 // import ContactForm from './contact/ContactForm'
 
 export default function Home () {
@@ -100,6 +101,7 @@ export default function Home () {
                   />
                 </div>
               </div>
+
 
               {/* Right Section - START THE BUILD */}
               <div className='lg:col-span-6 relative'>
