@@ -1,27 +1,33 @@
 'use server'
 
-import logger from "@/utils/logger"
-import React from "react"
-import { Resend } from "resend"
-import ContactFormTemplate from "@/lib/resend/ContactFormTemplate"
+import logger from '@/utils/logger'
+import React from 'react'
+import { Resend } from 'resend'
+import ContactFormTemplate from '@/lib/resend/ContactFormTemplate'
+import { ContactFormSchemaZ } from '@/lib/types'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
-export async function sendEmailAction (formData: FormData) {
+export async function sendContactEmailAction (formData: FormData) {
+  const parseResult = ContactFormSchemaZ.safeParse(
+    Object.fromEntries(formData.entries())
+  )
 
-const name = formData.get('name') as string
-const senderEmail = formData.get('senderEmail') as string
-const message = formData.get('message') as string
+  if (!parseResult.success) {
+    logger.error('Validation error:', parseResult.error)
+    return { success: false, error: parseResult.error.errors }
+  }
 
+  const { name, senderEmail, message } = parseResult.data
 
   const { data, error } = await resend.emails.send({
     from: 'Acme <onboarding@resend.dev>',
     to: ['cherrydub@gmail.com'],
     subject: 'Hello world',
     react: React.createElement(ContactFormTemplate, {
-      name: name || 'John Doe',
-      message: message || 'Hello world',
-      senderEmail: senderEmail || 'testing@gmail.com'
+      name,
+      message,
+      senderEmail
     })
   })
 
@@ -33,5 +39,4 @@ const message = formData.get('message') as string
   logger.success('Email sent successfully via email-action:', data)
 
   return { success: true }
-
 }
