@@ -216,11 +216,11 @@ export default function Home() {
                           className: `h-5 w-5 ${feature.color}`
                         })}
                       </div>
-                      <div className='flex-1 space-y-1'>
-                        <h3 className='font-semibold text-base lg:text-sm text-foreground/90'>
+                      <div className='flex-1 space-y-0.5'>
+                        <h3 className='font-medium text-xs leading-tight text-foreground/90'>
                           {feature.title}
                         </h3>
-                        <p className='text-sm lg:text-xs text-muted-foreground leading-relaxed'>
+                        <p className='text-[10px] leading-tight text-muted-foreground'>
                           {feature.description}
                         </p>
                       </div>
@@ -253,11 +253,11 @@ export default function Home() {
                           className: `h-5 w-5 ${feature.color}`
                         })}
                       </div>
-                      <div className='flex-1 space-y-1'>
-                        <h3 className='font-semibold text-base lg:text-sm text-foreground/90'>
+                      <div className='flex-1 space-y-0.5'>
+                        <h3 className='font-medium text-xs leading-tight text-foreground/90'>
                           {feature.title}
                         </h3>
-                        <p className='text-sm lg:text-xs text-muted-foreground leading-relaxed'>
+                        <p className='text-[10px] leading-tight text-muted-foreground'>
                           {feature.description}
                         </p>
                       </div>
@@ -291,11 +291,11 @@ export default function Home() {
                           className: `h-5 w-5 ${feature.color}`
                         })}
                       </div>
-                      <div className='flex-1 space-y-1'>
-                        <h3 className='font-semibold text-base lg:text-sm text-foreground/90'>
+                      <div className='flex-1 space-y-0.5'>
+                        <h3 className='font-medium text-xs leading-tight text-foreground/90'>
                           {feature.title}
                         </h3>
-                        <p className='text-sm lg:text-xs text-muted-foreground leading-relaxed'>
+                        <p className='text-[10px] leading-tight text-muted-foreground'>
                           {feature.description}
                         </p>
                       </div>
@@ -327,11 +327,11 @@ export default function Home() {
                           className: `h-5 w-5 ${feature.color}`
                         })}
                       </div>
-                      <div className='flex-1 space-y-1'>
-                        <h3 className='font-semibold text-base lg:text-sm text-foreground/90'>
+                      <div className='flex-1 space-y-0.5'>
+                        <h3 className='font-medium text-xs leading-tight text-foreground/90'>
                           {feature.title}
                         </h3>
-                        <p className='text-sm lg:text-xs text-muted-foreground leading-relaxed'>
+                        <p className='text-[10px] leading-tight text-muted-foreground'>
                           {feature.description}
                         </p>
                       </div>
@@ -361,11 +361,11 @@ export default function Home() {
                           className: `h-5 w-5 ${feature.color}`
                         })}
                       </div>
-                      <div className='flex-1 space-y-1'>
-                        <h3 className='font-semibold text-base lg:text-sm text-foreground/90'>
+                      <div className='flex-1 space-y-0.5'>
+                        <h3 className='font-medium text-xs leading-tight text-foreground/90'>
                           {feature.title}
                         </h3>
-                        <p className='text-sm lg:text-xs text-muted-foreground leading-relaxed'>
+                        <p className='text-[10px] leading-tight text-muted-foreground'>
                           {feature.description}
                         </p>
                       </div>
