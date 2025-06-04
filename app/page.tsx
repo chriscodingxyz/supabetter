@@ -158,156 +158,172 @@ export default function Home () {
             <div className='relative order-2 lg:order-2 hidden md:block'>
               <div className='relative mx-auto max-w-lg lg:max-w-none'>
                 {/* Code showcase with golden ratio proportions */}
-                <div className='relative aspect-[4/3] md:aspect-[1.618/1] rounded-2xl overflow-hidden bg-gradient-to-br from-zinc-900 to-zinc-950 dark:from-zinc-900 dark:to-black border border-zinc-800'>
+                <div className='relative aspect-[4/3] md:aspect-[1.618/1] rounded-2xl overflow-hidden bg-gradient-to-br from-zinc-900 to-zinc-950 dark:from-zinc-900 dark:to-black border border-zinc-800 shadow-2xl shadow-zinc-900/20'>
                   {/* Terminal/Code Editor */}
                   <div className='h-full flex flex-col'>
                     {/* Terminal header */}
-                    <div className='flex items-center justify-between px-4 py-3 bg-zinc-800/50 border-b border-zinc-700/50'>
+                    <div className='flex items-center justify-between px-4 py-3 bg-zinc-800/50 backdrop-blur-sm border-b border-zinc-700/50'>
                       <div className='flex items-center gap-2'>
                         <div className='flex gap-1.5'>
-                          <div className='w-3 h-3 rounded-full bg-red-500' />
-                          <div className='w-3 h-3 rounded-full bg-yellow-500' />
-                          <div className='w-3 h-3 rounded-full bg-green-500' />
+                          <div className='w-3 h-3 rounded-full bg-red-500 hover:bg-red-400 transition-colors cursor-pointer' />
+                          <div className='w-3 h-3 rounded-full bg-yellow-500 hover:bg-yellow-400 transition-colors cursor-pointer' />
+                          <div className='w-3 h-3 rounded-full bg-green-500 hover:bg-green-400 transition-colors cursor-pointer' />
                         </div>
                         <span className='text-xs text-zinc-400 font-mono ml-2'>~/supabetter</span>
                       </div>
                       <div className='flex gap-3 text-xs text-zinc-500'>
-                        <span>⚡ Fast</span>
-                        <span>🔒 Secure</span>
-                        <span>🎨 Beautiful</span>
+                        <span className='px-2 py-1 rounded-md bg-zinc-800/30 border border-zinc-700/30'>⚡ Fast</span>
+                        <span className='px-2 py-1 rounded-md bg-zinc-800/30 border border-zinc-700/30'>🔒 Secure</span>
+                        <span className='px-2 py-1 rounded-md bg-zinc-800/30 border border-zinc-700/30'>🎨 Beautiful</span>
                       </div>
                     </div>
                     
                     {/* Code content with explicit height for ScrollArea */}
                     <ScrollArea className='flex-1' style={{ height: 'calc(100% - 52px)' }}>
                       <div className='p-4 pr-3'>
-                        <div className='font-mono text-xs space-y-3'>
+                        <div className='font-mono text-xs space-y-4'>
                           {/* Clone command */}
-                          <div className='flex items-center gap-2'>
+                          <div className='flex items-center gap-2 group'>
                             <span className='text-emerald-400'>$</span>
-                            <span className='text-zinc-300'>git clone https://github.com/chriscodingxyz/supabetter.git</span>
+                            <span className='text-zinc-300 group-hover:text-zinc-100 transition-colors'>git clone https://github.com/chriscodingxyz/supabetter.git</span>
                           </div>
                           
-                          <div className='flex items-center gap-2'>
+                          <div className='flex items-center gap-2 group'>
                             <span className='text-emerald-400'>$</span>
-                            <span className='text-zinc-300'>cd supabetter</span>
+                            <span className='text-zinc-300 group-hover:text-zinc-100 transition-colors'>cd supabetter</span>
                           </div>
 
                           {/* Install dependencies */}
-                          <div className='flex items-center gap-2'>
+                          <div className='flex items-center gap-2 group'>
                             <span className='text-emerald-400'>$</span>
-                            <span className='text-zinc-300'>pnpm install</span>
-                            <span className='animate-pulse'>▊</span>
+                            <span className='text-zinc-300 group-hover:text-zinc-100 transition-colors'>pnpm install</span>
+                            <span className='animate-pulse text-emerald-400'>▊</span>
                           </div>
                           
                           {/* Output */}
-                          <div className='text-zinc-500 text-[11px] space-y-1 ml-4'>
-                            <div>📦 Installing dependencies...</div>
-                            <div>✓ next@15.2.4</div>
-                            <div>✓ better-auth@1.2.5</div>
-                            <div>✓ drizzle-orm + postgres</div>
-                            <div>✓ @shadcn/ui components</div>
-                            <div className='text-emerald-400'>✨ Done!</div>
+                          <div className='text-zinc-500 text-[11px] space-y-1.5 ml-4 border-l-2 border-zinc-700/30 pl-3'>
+                            <div className='flex items-center gap-2'>
+                              <div className='w-1 h-1 rounded-full bg-blue-400 animate-pulse'></div>
+                              <span>📦 Installing dependencies...</span>
+                            </div>
+                            <div className='text-emerald-400/80'>✓ next@15.2.4</div>
+                            <div className='text-emerald-400/80'>✓ better-auth@1.2.5</div>
+                            <div className='text-emerald-400/80'>✓ drizzle-orm + postgres</div>
+                            <div className='text-emerald-400/80'>✓ @shadcn/ui components</div>
+                            <div className='text-emerald-400 font-medium'>✨ Done!</div>
                           </div>
 
                           {/* Env setup */}
-                          <div className='mt-4'>
-                            <div className='text-zinc-500 text-[11px]'>// Setup environment variables</div>
-                            <div className='flex items-center gap-2'>
-                              <span className='text-emerald-400'>$</span>
-                              <span className='text-zinc-300'>cp envExample.txt .env</span>
-                            </div>
-                            <div className='flex items-center gap-2 mt-2'>
-                              <span className='text-emerald-400'>$</span>
-                              <span className='text-zinc-300'>code .env</span>
+                          <div className='mt-6'>
+                            <div className='text-zinc-500 text-[11px] mb-2'>// Setup environment variables</div>
+                            <div className='space-y-2'>
+                              <div className='flex items-center gap-2 group'>
+                                <span className='text-emerald-400'>$</span>
+                                <span className='text-zinc-300 group-hover:text-zinc-100 transition-colors'>cp envExample.txt .env</span>
+                              </div>
+                              <div className='flex items-center gap-2 group'>
+                                <span className='text-emerald-400'>$</span>
+                                <span className='text-zinc-300 group-hover:text-zinc-100 transition-colors'>code .env</span>
+                              </div>
                             </div>
                           </div>
 
                           {/* .env file content */}
-                          <div className='mt-4 p-3 bg-zinc-800/50 rounded-lg border border-zinc-700/30'>
-                            <div className='text-[11px] space-y-2 font-mono'>
-                              <div className='text-zinc-500'># Authentication (required)</div>
-                              <div>
-                                <span className='text-purple-400'>BETTER_AUTH_SECRET</span>=
-                                <span className='text-emerald-400'>your_secret_here</span>
-                                <span className='text-zinc-500 ml-2'># Generate: openssl rand -base64 32</span>
-                              </div>
-                              <div>
-                                <span className='text-purple-400'>BETTER_AUTH_URL</span>=
-                                <span className='text-blue-400'>http://localhost:3000</span>
-                              </div>
-                              
-                              <div className='text-zinc-500 mt-3'># Supabase (required) - Get from: supabase.com</div>
-                              <div>
-                                <span className='text-purple-400'>SUPABASE_URL</span>=
-                                <span className='text-yellow-400'>https://[project].supabase.co</span>
-                              </div>
-                              <div>
-                                <span className='text-purple-400'>SUPABASE_SERVICE_ROLE_KEY</span>=
-                                <span className='text-yellow-400'>eyJ...</span>
-                              </div>
-                              <div>
-                                <span className='text-purple-400'>DATABASE_URL</span>=
-                                <span className='text-yellow-400'>postgresql://...</span>
+                          <div className='mt-4 p-4 bg-gradient-to-br from-zinc-800/60 to-zinc-900/60 rounded-xl border border-zinc-700/40 backdrop-blur-sm'>
+                            <div className='text-[11px] space-y-2.5 font-mono'>
+                              <div className='text-zinc-400 font-medium border-b border-zinc-700/30 pb-2'># Authentication (required)</div>
+                              <div className='space-y-1'>
+                                <div>
+                                  <span className='text-purple-400'>BETTER_AUTH_SECRET</span>=
+                                  <span className='text-emerald-400'>your_secret_here</span>
+                                  <span className='text-zinc-500 ml-2'># Generate: openssl rand -base64 32</span>
+                                </div>
+                                <div>
+                                  <span className='text-purple-400'>BETTER_AUTH_URL</span>=
+                                  <span className='text-blue-400'>http://localhost:3000</span>
+                                </div>
                               </div>
                               
-                              <div className='text-zinc-500 mt-3'># Social Auth (optional)</div>
-                              <div>
-                                <span className='text-purple-400'>GOOGLE_CLIENT_ID</span>=
-                                <span className='text-zinc-600'>from console.cloud.google.com</span>
-                              </div>
-                              <div>
-                                <span className='text-purple-400'>GOOGLE_CLIENT_SECRET</span>=
-                                <span className='text-zinc-600'>from console.cloud.google.com</span>
-                              </div>
-                              <div>
-                                <span className='text-purple-400'>GITHUB_CLIENT_ID</span>=
-                                <span className='text-zinc-600'>from github.com/settings/apps</span>
-                              </div>
-                              <div>
-                                <span className='text-purple-400'>GITHUB_CLIENT_SECRET</span>=
-                                <span className='text-zinc-600'>from github.com/settings/apps</span>
+                              <div className='text-zinc-400 font-medium border-b border-zinc-700/30 pb-2 pt-2'># Supabase (required) - Get from: supabase.com</div>
+                              <div className='space-y-1'>
+                                <div>
+                                  <span className='text-purple-400'>SUPABASE_URL</span>=
+                                  <span className='text-yellow-400'>https://[project].supabase.co</span>
+                                </div>
+                                <div>
+                                  <span className='text-purple-400'>SUPABASE_SERVICE_ROLE_KEY</span>=
+                                  <span className='text-yellow-400'>eyJ...</span>
+                                </div>
+                                <div>
+                                  <span className='text-purple-400'>DATABASE_URL</span>=
+                                  <span className='text-yellow-400'>postgresql://...</span>
+                                </div>
                               </div>
                               
-                              <div className='text-zinc-500 mt-3'># Email (optional) - Get from: resend.com</div>
+                              <div className='text-zinc-400 font-medium border-b border-zinc-700/30 pb-2 pt-2'># Social Auth (optional)</div>
+                              <div className='space-y-1 text-zinc-500'>
+                                <div>
+                                  <span className='text-purple-400/70'>GOOGLE_CLIENT_ID</span>=
+                                  <span className='text-zinc-600'>from console.cloud.google.com</span>
+                                </div>
+                                <div>
+                                  <span className='text-purple-400/70'>GOOGLE_CLIENT_SECRET</span>=
+                                  <span className='text-zinc-600'>from console.cloud.google.com</span>
+                                </div>
+                                <div>
+                                  <span className='text-purple-400/70'>GITHUB_CLIENT_ID</span>=
+                                  <span className='text-zinc-600'>from github.com/settings/apps</span>
+                                </div>
+                                <div>
+                                  <span className='text-purple-400/70'>GITHUB_CLIENT_SECRET</span>=
+                                  <span className='text-zinc-600'>from github.com/settings/apps</span>
+                                </div>
+                              </div>
+                              
+                              <div className='text-zinc-400 font-medium border-b border-zinc-700/30 pb-2 pt-2'># Email (optional) - Get from: resend.com</div>
                               <div>
-                                <span className='text-purple-400'>RESEND_API_KEY</span>=
+                                <span className='text-purple-400/70'>RESEND_API_KEY</span>=
                                 <span className='text-zinc-600'>re_...</span>
                               </div>
                             </div>
                           </div>
 
                           {/* Supabase setup reminder */}
-                          <div className='mt-4 p-3 bg-yellow-500/10 rounded-lg border border-yellow-500/20'>
+                          <div className='mt-4 p-3 bg-gradient-to-r from-yellow-500/10 to-amber-500/10 rounded-lg border border-yellow-500/30 backdrop-blur-sm'>
                             <div className='text-[11px] space-y-1 text-yellow-200'>
-                              <div className='font-semibold'>⚠️ Supabase Setup Required:</div>
-                              <div>1. Create project at supabase.com</div>
-                              <div>2. Get SUPABASE_URL & service_role key</div>
-                              <div>3. Get DATABASE_URL from Connect → ORMs → Drizzle</div>
-                              <div>4. Update .env with all credentials</div>
+                              <div className='font-semibold flex items-center gap-2'>
+                                <span className='w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse'></span>
+                                ⚠️ Supabase Setup Required:
+                              </div>
+                              <div className='ml-4 space-y-0.5'>
+                                <div>1. Create project at supabase.com</div>
+                                <div>2. Get SUPABASE_URL & service_role key</div>
+                                <div>3. Get DATABASE_URL from Connect → ORMs → Drizzle</div>
+                                <div>4. Update .env with all credentials</div>
+                              </div>
                             </div>
                           </div>
 
                           {/* Database setup */}
-                          <div className='mt-4'>
-                            <div className='text-zinc-500 text-[11px]'>// Push database schema</div>
-                            <div className='flex items-center gap-2'>
+                          <div className='mt-6'>
+                            <div className='text-zinc-500 text-[11px] mb-2'>// Push database schema</div>
+                            <div className='flex items-center gap-2 group'>
                               <span className='text-emerald-400'>$</span>
-                              <span className='text-zinc-300'>pnpm drizzle-kit push</span>
+                              <span className='text-zinc-300 group-hover:text-zinc-100 transition-colors'>pnpm drizzle-kit push</span>
                             </div>
-                            <div className='text-zinc-500 text-[11px] ml-4 mt-1'>✓ Schema pushed to Supabase</div>
+                            <div className='text-emerald-400/80 text-[11px] ml-4 mt-1'>✓ Schema pushed to Supabase</div>
                           </div>
 
                           {/* Run dev server */}
-                          <div className='mt-4'>
-                            <div className='flex items-center gap-2'>
+                          <div className='mt-6'>
+                            <div className='flex items-center gap-2 group'>
                               <span className='text-emerald-400'>$</span>
-                              <span className='text-zinc-300'>pnpm dev</span>
+                              <span className='text-zinc-300 group-hover:text-zinc-100 transition-colors'>pnpm dev</span>
                             </div>
-                            <div className='text-zinc-500 text-[11px] ml-4 mt-1'>
-                              <div className='text-blue-400'>▲ Next.js 15.2.4 (turbo)</div>
+                            <div className='text-zinc-500 text-[11px] ml-4 mt-2 space-y-1 border-l-2 border-emerald-500/20 pl-3'>
+                              <div className='text-blue-400 font-medium'>▲ Next.js 15.2.4 (turbo)</div>
                               <div>- Local: http://localhost:3000</div>
-                              <div className='text-emerald-400'>✓ Ready in 1.2s</div>
+                              <div className='text-emerald-400 font-medium'>✓ Ready in 1.2s</div>
                             </div>
                           </div>
                         </div>
