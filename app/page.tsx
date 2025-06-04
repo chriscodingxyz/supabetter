@@ -79,15 +79,14 @@ export default function Home () {
         <div className='absolute bottom-0 left-0 w-[40%] h-[40%] bg-gradient-radial from-primary/3 to-transparent blur-3xl' />
       </div>
 
-      {/* Hero Section with Golden Ratio spacing */}
-      <section className='relative'>
-        <div className='mx-auto max-w-7xl px-6 lg:px-8'>
-          {/* Main content grid using golden ratio (1:1.618) */}
-          <div className='grid lg:grid-cols-[1fr_1.618fr] gap-8 lg:gap-16 py-16 lg:py-24 items-center min-h-[calc(100vh-60px-8rem)]'>
+      {/* Hero Section */}
+      <section className='py-24 md:py-32 lg:py-40'>
+        <div className='container px-4 mx-auto'>
+          <div className='grid lg:grid-cols-[1fr_1.618fr] gap-8 lg:gap-16 items-center min-h-[calc(100vh-60px-8rem)]'>
             
             {/* Left: Primary content */}
             <div className='relative order-1 lg:order-1'>
-              <div className='space-y-6'>
+              <div className='space-y-8'>
                 {/* Badge */}
                 <div className='inline-flex items-center px-3 py-1 text-xs font-medium bg-primary/5 text-primary rounded-full border border-primary/10'>
                   <Rocket className='w-3 h-3 mr-1.5' />
@@ -149,6 +148,21 @@ export default function Home () {
                   <div className='inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-violet-50 dark:bg-violet-900/20 border border-violet-200 dark:border-violet-700/50'>
                     <Shadcnui className='w-3.5 h-3.5 text-violet-500' />
                     <span className='text-xs font-medium'>shadcn/ui</span>
+                  </div>
+                </div>
+
+                {/* Mobile terminal - simple version for small screens */}
+                <div className='md:hidden mt-8'>
+                  <div className='bg-zinc-900 dark:bg-zinc-950 rounded-xl p-4 border border-zinc-800'>
+                    <div className='font-mono text-xs space-y-2'>
+                      <div className='flex items-center gap-2'>
+                        <span className='text-emerald-400'>$</span>
+                        <span className='text-zinc-300'>git clone https://github.com/chriscodingxyz/supabetter.git</span>
+                      </div>
+                      <div className='text-zinc-500 text-[10px] ml-4'>
+                        ✨ Ready in 30 seconds!
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -349,58 +363,45 @@ export default function Home () {
               </div>
             </div>
           </div>
-
-          {/* Mobile terminal - simple version for small screens */}
-          <div className='md:hidden mt-8 mb-16'>
-            <div className='bg-zinc-900 dark:bg-zinc-950 rounded-xl p-4 border border-zinc-800'>
-              <div className='font-mono text-xs space-y-2'>
-                <div className='flex items-center gap-2'>
-                  <span className='text-emerald-400'>$</span>
-                  <span className='text-zinc-300'>git clone https://github.com/chriscodingxyz/supabetter.git</span>
-                </div>
-                <div className='text-zinc-500 text-[10px] ml-4'>
-                  ✨ Ready in 30 seconds!
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Feature grid - using golden ratio spacing */}
-          <div className='border-t border-border/50 pt-16 pb-24'>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8'>
-              {featuresData.map((feature, index) => (
-                <div
-                  key={index}
-                  className='group relative p-6 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-border transition-all duration-300'
-                >
-                  <div className='flex items-start gap-4'>
-                    <div className={`p-2 rounded-lg bg-gradient-to-br ${
-                      index === 0 ? 'from-blue-500/10 to-blue-600/10' :
-                      index === 1 ? 'from-purple-500/10 to-purple-600/10' :
-                      index === 2 ? 'from-red-500/10 to-red-600/10' :
-                      index === 3 ? 'from-yellow-500/10 to-yellow-600/10' :
-                      index === 4 ? 'from-indigo-500/10 to-indigo-600/10' :
-                      'from-pink-500/10 to-pink-600/10'
-                    }`}>
-                      {React.cloneElement(feature.icon, {
-                        className: `h-5 w-5 ${feature.color}`
-                      })}
-                    </div>
-                    <div className='flex-1 space-y-1'>
-                      <h3 className='font-semibold text-foreground/90'>
-                        {feature.title}
-                      </h3>
-                      <p className='text-sm text-muted-foreground leading-relaxed'>
-                        {feature.description}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
+
+      {/* Feature grid - using golden ratio spacing */}
+      <div className='border-t border-border/50 pt-16 pb-24'>
+        <div className='container px-4 mx-auto'>
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8'>
+            {featuresData.map((feature, index) => (
+              <div
+                key={index}
+                className='group relative p-6 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-border transition-all duration-300'
+              >
+                <div className='flex items-start gap-4'>
+                  <div className={`p-2 rounded-lg bg-gradient-to-br ${
+                    index === 0 ? 'from-blue-500/10 to-blue-600/10' :
+                    index === 1 ? 'from-purple-500/10 to-purple-600/10' :
+                    index === 2 ? 'from-red-500/10 to-red-600/10' :
+                    index === 3 ? 'from-yellow-500/10 to-yellow-600/10' :
+                    index === 4 ? 'from-indigo-500/10 to-indigo-600/10' :
+                    'from-pink-500/10 to-pink-600/10'
+                  }`}>
+                    {React.cloneElement(feature.icon, {
+                      className: `h-5 w-5 ${feature.color}`
+                    })}
+                  </div>
+                  <div className='flex-1 space-y-1'>
+                    <h3 className='font-semibold text-foreground/90'>
+                      {feature.title}
+                    </h3>
+                    <p className='text-sm text-muted-foreground leading-relaxed'>
+                      {feature.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
