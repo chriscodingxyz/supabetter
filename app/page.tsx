@@ -32,7 +32,7 @@ export default function Home () {
       icon: <Zap />,
       title: 'Lightning Fast',
       description:
-        'Built on Next.js 14 with App Router for blazing performance',
+        'Built on Next.js 15 with App Router for blazing performance',
       color: 'text-blue-400'
     },
     {
@@ -181,76 +181,133 @@ export default function Home () {
                     {/* Code content with explicit height for ScrollArea */}
                     <ScrollArea className='flex-1' style={{ height: 'calc(100% - 52px)' }}>
                       <div className='p-4 pr-3'>
-                        <div className='font-mono text-sm space-y-3'>
-                          {/* Install command */}
+                        <div className='font-mono text-xs space-y-3'>
+                          {/* Clone command */}
                           <div className='flex items-center gap-2'>
                             <span className='text-emerald-400'>$</span>
-                            <span className='text-zinc-300'>npx create-supabetter-app my-app</span>
+                            <span className='text-zinc-300'>git clone https://github.com/chriscodingxyz/supabetter.git</span>
+                          </div>
+                          
+                          <div className='flex items-center gap-2'>
+                            <span className='text-emerald-400'>$</span>
+                            <span className='text-zinc-300'>cd supabetter</span>
+                          </div>
+
+                          {/* Install dependencies */}
+                          <div className='flex items-center gap-2'>
+                            <span className='text-emerald-400'>$</span>
+                            <span className='text-zinc-300'>pnpm install</span>
                             <span className='animate-pulse'>▊</span>
                           </div>
                           
                           {/* Output */}
-                          <div className='text-zinc-500 text-xs space-y-1 ml-4'>
-                            <div>✓ Creating your Supabetter app...</div>
-                            <div>✓ Installing dependencies...</div>
-                            <div>✓ Setting up authentication...</div>
-                            <div>✓ Configuring database...</div>
-                            <div className='text-emerald-400'>✨ Done in 12s!</div>
+                          <div className='text-zinc-500 text-[11px] space-y-1 ml-4'>
+                            <div>📦 Installing dependencies...</div>
+                            <div>✓ next@15.2.4</div>
+                            <div>✓ better-auth@1.2.5</div>
+                            <div>✓ drizzle-orm + postgres</div>
+                            <div>✓ @shadcn/ui components</div>
+                            <div className='text-emerald-400'>✨ Done!</div>
                           </div>
 
-                          {/* File structure preview */}
-                          <div className='mt-6 p-3 bg-zinc-800/30 rounded-lg border border-zinc-700/30'>
-                            <div className='text-xs space-y-1.5 text-zinc-400'>
-                              <div className='flex items-center gap-2'>
-                                <span className='text-blue-400'>📁</span> app/
-                              </div>
-                              <div className='flex items-center gap-2 ml-4'>
-                                <span className='text-green-400'>📄</span> layout.tsx
-                              </div>
-                              <div className='flex items-center gap-2 ml-4'>
-                                <span className='text-green-400'>📄</span> page.tsx
-                              </div>
-                              <div className='flex items-center gap-2'>
-                                <span className='text-blue-400'>📁</span> components/
-                              </div>
-                              <div className='flex items-center gap-2'>
-                                <span className='text-blue-400'>📁</span> lib/
-                              </div>
-                              <div className='flex items-center gap-2 ml-4'>
-                                <span className='text-yellow-400'>🔐</span> auth.ts
-                              </div>
-                              <div className='flex items-center gap-2 ml-4'>
-                                <span className='text-purple-400'>🗄️</span> db.ts
-                              </div>
-                            </div>
-                          </div>
-
-                          {/* Code snippet */}
-                          <div className='mt-4 text-xs'>
-                            <div className='text-zinc-500'>// Ready to use auth</div>
-                            <div><span className='text-purple-400'>const</span> <span className='text-zinc-300'>session</span> = <span className='text-blue-400'>await</span> <span className='text-yellow-300'>auth</span>()</div>
-                            <div><span className='text-purple-400'>if</span> (<span className='text-zinc-300'>session</span>) {'{'}</div>
-                            <div className='ml-4'><span className='text-zinc-500'>// User is authenticated</span></div>
-                            <div>{'}'}</div>
-                          </div>
-
-                          {/* Additional features to show scroll */}
-                          <div className='mt-6 pt-4 border-t border-zinc-700/30'>
-                            <div className='text-xs text-zinc-500 mb-2'>// Database queries with Drizzle</div>
-                            <div className='text-xs space-y-1'>
-                              <div><span className='text-purple-400'>const</span> <span className='text-zinc-300'>users</span> = <span className='text-blue-400'>await</span> <span className='text-zinc-300'>db</span></div>
-                              <div className='ml-4'>.<span className='text-yellow-300'>select</span>()</div>
-                              <div className='ml-4'>.<span className='text-yellow-300'>from</span>(<span className='text-zinc-300'>usersTable</span>)</div>
-                              <div className='ml-4'>.<span className='text-yellow-300'>where</span>(<span className='text-yellow-300'>eq</span>(<span className='text-zinc-300'>usersTable.active</span>, <span className='text-emerald-400'>true</span>))</div>
-                            </div>
-                          </div>
-
+                          {/* Env setup */}
                           <div className='mt-4'>
-                            <div className='text-xs text-zinc-500 mb-2'>// Beautiful UI components</div>
-                            <div className='text-xs space-y-1'>
-                              <div><span className='text-purple-400'>import</span> {'{'} <span className='text-zinc-300'>Button</span> {'}'} <span className='text-purple-400'>from</span> <span className='text-emerald-400'>&apos;@/components/ui/button&apos;</span></div>
-                              <div><span className='text-purple-400'>import</span> {'{'} <span className='text-zinc-300'>Card</span> {'}'} <span className='text-purple-400'>from</span> <span className='text-emerald-400'>&apos;@/components/ui/card&apos;</span></div>
-                              <div><span className='text-purple-400'>import</span> {'{'} <span className='text-zinc-300'>Dialog</span> {'}'} <span className='text-purple-400'>from</span> <span className='text-emerald-400'>&apos;@/components/ui/dialog&apos;</span></div>
+                            <div className='text-zinc-500 text-[11px]'>// Setup environment variables</div>
+                            <div className='flex items-center gap-2'>
+                              <span className='text-emerald-400'>$</span>
+                              <span className='text-zinc-300'>cp envExample.txt .env</span>
+                            </div>
+                            <div className='flex items-center gap-2 mt-2'>
+                              <span className='text-emerald-400'>$</span>
+                              <span className='text-zinc-300'>code .env</span>
+                            </div>
+                          </div>
+
+                          {/* .env file content */}
+                          <div className='mt-4 p-3 bg-zinc-800/50 rounded-lg border border-zinc-700/30'>
+                            <div className='text-[11px] space-y-2 font-mono'>
+                              <div className='text-zinc-500'># Authentication (required)</div>
+                              <div>
+                                <span className='text-purple-400'>BETTER_AUTH_SECRET</span>=
+                                <span className='text-emerald-400'>your_secret_here</span>
+                                <span className='text-zinc-500 ml-2'># Generate: openssl rand -base64 32</span>
+                              </div>
+                              <div>
+                                <span className='text-purple-400'>BETTER_AUTH_URL</span>=
+                                <span className='text-blue-400'>http://localhost:3000</span>
+                              </div>
+                              
+                              <div className='text-zinc-500 mt-3'># Supabase (required) - Get from: supabase.com</div>
+                              <div>
+                                <span className='text-purple-400'>SUPABASE_URL</span>=
+                                <span className='text-yellow-400'>https://[project].supabase.co</span>
+                              </div>
+                              <div>
+                                <span className='text-purple-400'>SUPABASE_SERVICE_ROLE_KEY</span>=
+                                <span className='text-yellow-400'>eyJ...</span>
+                              </div>
+                              <div>
+                                <span className='text-purple-400'>DATABASE_URL</span>=
+                                <span className='text-yellow-400'>postgresql://...</span>
+                              </div>
+                              
+                              <div className='text-zinc-500 mt-3'># Social Auth (optional)</div>
+                              <div>
+                                <span className='text-purple-400'>GOOGLE_CLIENT_ID</span>=
+                                <span className='text-zinc-600'>from console.cloud.google.com</span>
+                              </div>
+                              <div>
+                                <span className='text-purple-400'>GOOGLE_CLIENT_SECRET</span>=
+                                <span className='text-zinc-600'>from console.cloud.google.com</span>
+                              </div>
+                              <div>
+                                <span className='text-purple-400'>GITHUB_CLIENT_ID</span>=
+                                <span className='text-zinc-600'>from github.com/settings/apps</span>
+                              </div>
+                              <div>
+                                <span className='text-purple-400'>GITHUB_CLIENT_SECRET</span>=
+                                <span className='text-zinc-600'>from github.com/settings/apps</span>
+                              </div>
+                              
+                              <div className='text-zinc-500 mt-3'># Email (optional) - Get from: resend.com</div>
+                              <div>
+                                <span className='text-purple-400'>RESEND_API_KEY</span>=
+                                <span className='text-zinc-600'>re_...</span>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Supabase setup reminder */}
+                          <div className='mt-4 p-3 bg-yellow-500/10 rounded-lg border border-yellow-500/20'>
+                            <div className='text-[11px] space-y-1 text-yellow-200'>
+                              <div className='font-semibold'>⚠️ Supabase Setup Required:</div>
+                              <div>1. Create project at supabase.com</div>
+                              <div>2. Get SUPABASE_URL & service_role key</div>
+                              <div>3. Get DATABASE_URL from Connect → ORMs → Drizzle</div>
+                              <div>4. Update .env with all credentials</div>
+                            </div>
+                          </div>
+
+                          {/* Database setup */}
+                          <div className='mt-4'>
+                            <div className='text-zinc-500 text-[11px]'>// Push database schema</div>
+                            <div className='flex items-center gap-2'>
+                              <span className='text-emerald-400'>$</span>
+                              <span className='text-zinc-300'>pnpm drizzle-kit push</span>
+                            </div>
+                            <div className='text-zinc-500 text-[11px] ml-4 mt-1'>✓ Schema pushed to Supabase</div>
+                          </div>
+
+                          {/* Run dev server */}
+                          <div className='mt-4'>
+                            <div className='flex items-center gap-2'>
+                              <span className='text-emerald-400'>$</span>
+                              <span className='text-zinc-300'>pnpm dev</span>
+                            </div>
+                            <div className='text-zinc-500 text-[11px] ml-4 mt-1'>
+                              <div className='text-blue-400'>▲ Next.js 15.2.4 (turbo)</div>
+                              <div>- Local: http://localhost:3000</div>
+                              <div className='text-emerald-400'>✓ Ready in 1.2s</div>
                             </div>
                           </div>
                         </div>
@@ -283,7 +340,7 @@ export default function Home () {
               <div className='font-mono text-xs space-y-2'>
                 <div className='flex items-center gap-2'>
                   <span className='text-emerald-400'>$</span>
-                  <span className='text-zinc-300'>npx create-supabetter-app</span>
+                  <span className='text-zinc-300'>git clone https://github.com/chriscodingxyz/supabetter.git</span>
                 </div>
                 <div className='text-zinc-500 text-[10px] ml-4'>
                   ✨ Ready in 30 seconds!
