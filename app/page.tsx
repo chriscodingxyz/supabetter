@@ -86,7 +86,7 @@ export default function Home () {
           <div className='grid lg:grid-cols-[1fr_1.618fr] gap-8 lg:gap-16 py-16 lg:py-24 items-center min-h-[calc(100vh-60px-8rem)]'>
             
             {/* Left: Primary content */}
-            <div className='relative order-2 lg:order-1'>
+            <div className='relative order-1 lg:order-1'>
               <div className='space-y-6'>
                 {/* Badge */}
                 <div className='inline-flex items-center px-3 py-1 text-xs font-medium bg-primary/5 text-primary rounded-full border border-primary/10'>
@@ -109,15 +109,15 @@ export default function Home () {
                 </div>
 
                 {/* CTA Buttons */}
-                <div className='flex flex-col sm:flex-row gap-4 pt-2'>
+                <div className='flex flex-row gap-4 pt-2'>
                   <Link href='/build'>
-                    <ShadowButton size='lg' className='w-full sm:w-auto'>
+                    <ShadowButton size='sm' className='w-full sm:w-auto'>
                       <Rocket className='w-4 h-4 mr-2' />
                       Start Building
                     </ShadowButton>
                   </Link>
                   <Link href='https://github.com' target='_blank'>
-                    <ShadowButton variant='secondary' size='lg' className='w-full sm:w-auto'>
+                    <ShadowButton variant='secondary' size='sm' className='w-full sm:w-auto text-sm'>
                       <Github className='w-4 h-4 mr-2' />
                       View on GitHub
                     </ShadowButton>
@@ -155,10 +155,10 @@ export default function Home () {
             </div>
 
             {/* Right: Visual element */}
-            <div className='relative order-1 lg:order-2'>
+            <div className='relative order-2 lg:order-2 hidden md:block'>
               <div className='relative mx-auto max-w-lg lg:max-w-none'>
                 {/* Code showcase with golden ratio proportions */}
-                <div className='relative aspect-[1.618/1] rounded-2xl overflow-hidden bg-gradient-to-br from-zinc-900 to-zinc-950 dark:from-zinc-900 dark:to-black border border-zinc-800'>
+                <div className='relative aspect-[4/3] md:aspect-[1.618/1] rounded-2xl overflow-hidden bg-gradient-to-br from-zinc-900 to-zinc-950 dark:from-zinc-900 dark:to-black border border-zinc-800'>
                   {/* Terminal/Code Editor */}
                   <div className='h-full flex flex-col'>
                     {/* Terminal header */}
@@ -272,6 +272,21 @@ export default function Home () {
                     <Code className='w-3 h-3 text-blue-400' />
                     <span className='text-xs font-medium text-zinc-300'>TypeScript</span>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile terminal - simple version for small screens */}
+          <div className='md:hidden mt-8 mb-16'>
+            <div className='bg-zinc-900 dark:bg-zinc-950 rounded-xl p-4 border border-zinc-800'>
+              <div className='font-mono text-xs space-y-2'>
+                <div className='flex items-center gap-2'>
+                  <span className='text-emerald-400'>$</span>
+                  <span className='text-zinc-300'>npx create-supabetter-app</span>
+                </div>
+                <div className='text-zinc-500 text-[10px] ml-4'>
+                  ✨ Ready in 30 seconds!
                 </div>
               </div>
             </div>
