@@ -33,6 +33,9 @@ import { ContactForm } from '@/components/forms/ContactForm';
 import { GithubStarsButton } from '@/components/buttons/GithubStarsButton';
 import { ShadowButton } from '@/components/buttons/ShadowButton'
 import { InteractiveTerminal } from '@/components/InteractiveTerminal'
+import { FloatingTerminals } from '@/components/FloatingTerminals'
+import { StackedTerminals } from '@/components/StackedTerminals'
+import { ShuffleTerminals } from '@/components/ShuffleTerminals'
 import { RocketIcon } from '@/components/ui/rocket'
 
 export default function Home() {
@@ -171,19 +174,7 @@ export default function Home() {
             <div className='relative order-2 lg:order-last hidden md:block'>
               <div className='relative mx-auto max-w-2xl lg:max-w-none'>
                 {/* Interactive Terminal Setup */}
-                <InteractiveTerminal />
-
-                {/* Stats badges with golden ratio positioning */}
-                <div className='absolute -bottom-8 left-1/2 -translate-x-1/2 flex gap-3'>
-                  <div className='px-3 py-1.5 bg-background border border-border flex items-center gap-2 shadow-lg rounded-full'>
-                    <Zap className='w-3 h-3 text-yellow-400' />
-                    <span className='text-xs font-medium'>Setup in 30s</span>
-                  </div>
-                  <div className='px-3 py-1.5 bg-background border border-border flex items-center gap-2 shadow-lg rounded-full'>
-                    <Code className='w-3 h-3 text-blue-400' />
-                    <span className='text-xs font-medium'>TypeScript</span>
-                  </div>
-                </div>
+                <ShuffleTerminals />
               </div>
             </div>
           </div>
