@@ -44,7 +44,7 @@ export function InteractiveTerminal() {
       ]
     },
     {
-      title: "Environment Setup",
+      title: "Env Setup",
       icon: <Key className="w-4 h-4" />,
       commands: [
         {
@@ -71,7 +71,7 @@ export function InteractiveTerminal() {
       }
     },
     {
-      title: "Database & Launch",
+      title: "DB & Launch",
       icon: <Database className="w-4 h-4" />,
       commands: [
         {

@@ -26,10 +26,10 @@ export function GithubStarsButton() {
 
   return (
     <Link href='https://github.com/chriscodingxyz/supabetter' target='_blank' rel='noopener noreferrer'>
-      <ShadowButton variant='secondary' size='sm' className='w-full sm:w-auto text-sm flex items-center gap-1.5'>
+      <ShadowButton variant='secondary' size='default' className='w-full sm:w-auto flex items-center gap-2'>
         <Star color='gold' fill='gold' className='w-4 h-4' />
         <AnimatedNumber value={starCount} />
-        <span className='hidden sm:inline'>Stars on</span>
+        <span>Stars on</span>
         <Github className='w-4 h-4' />
       </ShadowButton>
     </Link>
