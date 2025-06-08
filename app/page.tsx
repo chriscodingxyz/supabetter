@@ -171,7 +171,7 @@ export default function Home() {
             </div>
 
             {/* Right: Visual element with golden ratio proportions */}
-            <div className='relative order-2 lg:order-last hidden md:block'>
+            <div className='relative order-2 lg:order-last hidden md:block lg:pt-20'>
               <div className='relative mx-auto max-w-2xl lg:max-w-none'>
                 {/* Interactive Terminal Setup */}
                 <ShuffleTerminals />
