@@ -58,7 +58,7 @@ export default async function DashboardPage () {
       )}
 
       {/* Sign Out Button */}
-      <SpinnerActionButton action={signOutAction}>Sign out</SpinnerActionButton>
+      {/* <SpinnerActionButton action={signOutAction}>Sign out</SpinnerActionButton> */}
 
       <SignOutClientButton />
     </div>

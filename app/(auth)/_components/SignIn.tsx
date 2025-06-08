@@ -21,6 +21,7 @@ import { cn } from '@/lib/utils'
 import { toast } from 'sonner'
 import { MetallicText } from '@/components/typography/MetallicText'
 import logger from '@/utils/logger'
+import { useRouter } from 'next/navigation'
 
 export default function SignIn () {
   const [email, setEmail] = useState('')
@@ -30,6 +31,7 @@ export default function SignIn () {
   const [showEmailForm, setShowEmailForm] = useState(false)
   const [lastSignInMethod, setLastSignInMethod] = useState<string | null>(null)
   const emailInputRef = useRef<HTMLInputElement>(null)
+  const router = useRouter()
 
   useEffect(() => {
     if (showEmailForm && emailInputRef.current) {
@@ -140,6 +142,8 @@ export default function SignIn () {
                         },
                         onSuccess: ctx => {
                           localStorage.setItem('lastSignInMethod', 'email')
+                          router.refresh()
+                          
                           // toast.success('You have successfully logged in')
                         },
                         onError: ctx => {
