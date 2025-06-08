@@ -12,6 +12,8 @@ import { Avatar, AvatarImage, AvatarFallback } from '../ui/avatar'
 import Image from 'next/image'
 import IconSupabetterLogo from '@/components/icons/svg/IconSupabetterLogo'
 
+
+// TODO: since this is in layout, fetch via client (usehooks) instead of server api etc
 export default async function Header () {
   const session = await auth.api.getSession({
     headers: await headers()

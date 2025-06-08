@@ -131,7 +131,7 @@ export function ShuffleTerminals() {
 
   return (
     <div className="relative w-full h-[600px] flex items-center justify-center">
-      <div className="relative w-full max-w-3xl h-[450px]">
+      <div className="relative w-full max-w-3xl min-h-[450px] h-auto">
         <AnimatePresence>
           {activeOrder.map((stepIndex, orderIndex) => {
             const step = setupSteps[stepIndex]
@@ -150,7 +150,7 @@ export function ShuffleTerminals() {
                 }}
                 animate={{ 
                   x: -orderIndex * 30, 
-                  y: -orderIndex * 45, 
+                  y: -orderIndex * 48, 
                   scale: 1 - (orderIndex * 0.1), 
                   opacity: 1
                 }}
@@ -171,15 +171,15 @@ export function ShuffleTerminals() {
               >
                 <motion.div
                   className={`
-                    h-full rounded-xl border bg-card overflow-hidden
-                    transition-all duration-300 cursor-pointer
+                    h-auto flex flex-col rounded-xl border bg-card overflow-hidden
+                    transition-all duration-300
                     ${isActive 
-                      ? 'border-primary/50 shadow-2xl shadow-primary/10' 
-                      : 'border-border/30 shadow-xl hover:shadow-2xl'
+                      ? 'border-primary/10 shadow-2xl shadow-primary/10' 
+                      : 'border-primary/10 shadow-xl hover:shadow-2xl hover:-translate-y-2 cursor-pointer'
                     }
                   `}
                   style={{
-                    width: `${100 - (orderIndex * 15)}%`, 
+                    width: `${100 - (orderIndex * 10)}%`, 
                     marginLeft: 'auto' 
                   }}
                   onClick={() => !isActive && bringToFront(stepIndex)}
@@ -210,7 +210,7 @@ export function ShuffleTerminals() {
                   </div>
 
                   {/* Terminal Content */}
-                  <div className="p-4 space-y-4 overflow-y-auto" style={{ height: 'calc(100% - 44px)' }}>
+                  <div className="p-4 space-y-3">
                     {step.commands.map((cmd, cmdIndex) => (
                       <motion.div
                         key={cmdIndex}
@@ -233,7 +233,7 @@ export function ShuffleTerminals() {
                           className={`
                             group relative flex items-center gap-2 px-3 py-2 
                             bg-muted/50 rounded-lg border border-border transition-all
-                            ${isActive ? 'hover:bg-muted/70 cursor-pointer' : 'cursor-default'}
+                            ${isActive ? 'hover:bg-muted/70 cursor-pointer' : 'cursor-pointer'}
                           `}
                         >
                           <span className="text-emerald-600 dark:text-emerald-400 font-mono text-xs">$</span>
