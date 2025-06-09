@@ -230,3 +230,8 @@
 .animate-pulse-subtle {
   animation: pulse-subtle 4s ease-in-out infinite;
 }
+
+/* Container */
+.container {
+  @apply mx-auto px-4;
+}
