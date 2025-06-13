@@ -8,12 +8,12 @@ import { TextScramble } from './ui/text-scramble'
 export function ShuffleTerminals() {
   const [copiedCommand, setCopiedCommand] = useState<string | null>(null)
   const [activeOrder, setActiveOrder] = useState([0, 1, 2])
-  const [hasClickedCommand, setHasClickedCommand] = useState(false)
+  const [clickedCommands, setClickedCommands] = useState<Set<string>>(new Set())
 
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text)
     setCopiedCommand(text)
-    setHasClickedCommand(true)
+    setClickedCommands(prev => new Set([...prev, text]))
     setTimeout(() => setCopiedCommand(null), 2000)
   }
 
@@ -75,7 +75,7 @@ export function ShuffleTerminals() {
         },
         {
           label: "Set environment variables",
-          command: "# Add your credentials to .env",
+          command: "# Update .env with your values",
           output: [
             "BETTER_AUTH_SECRET=your_secret_here",
             "BETTER_AUTH_URL=http://localhost:3000",
@@ -83,7 +83,8 @@ export function ShuffleTerminals() {
             "SUPABASE_SERVICE_ROLE_KEY=your_service_role_key",
             "DATABASE_URL=postgresql://postgres.your-project:[PASSWORD]@aws-0-region.pooler.supabase.com:6543/postgres"
           ],
-          isEnvFile: true
+          isEnvFile: true,
+          showByDefault: true
         }
       ]
     },
@@ -226,7 +227,12 @@ export function ShuffleTerminals() {
                           onClick={(e) => {
                             if (isActive) {
                               e.stopPropagation()
-                              copyToClipboard(cmd.command)
+                              if (cmd.isEnvFile && cmd.output) {
+                                // Copy the actual .env content
+                                copyToClipboard(cmd.output.join('\n'))
+                              } else {
+                                copyToClipboard(cmd.command)
+                              }
                             }
                           }}
                           className={`
@@ -238,7 +244,7 @@ export function ShuffleTerminals() {
                           <span className="text-emerald-600 dark:text-emerald-400 font-mono text-xs">$</span>
                           <TextScramble className="flex-1 font-mono text-xs text-foreground">{cmd.command}</TextScramble>
                           {isActive && (
-                            <div className="opacity-0 group-hover:opacity-100 transition-opacity">
+                            <div className="transition-opacity">
                               {copiedCommand === cmd.command ? (
                                 <Check className="w-4 h-4 text-emerald-500" />
                               ) : (
@@ -248,7 +254,7 @@ export function ShuffleTerminals() {
                           )}
                         </div>
                         
-                        {cmd.output && isActive && hasClickedCommand && (
+                        {cmd.output && isActive && (clickedCommands.has(cmd.command) || (cmd as any).showByDefault) && (
                           <div className="ml-4 pl-3 border-l-2 border-muted-foreground/20 space-y-1">
                             {cmd.output.map((line, lineIndex) => (
                               <div
