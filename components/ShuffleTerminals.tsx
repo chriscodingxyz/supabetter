@@ -8,10 +8,12 @@ import { TextScramble } from './ui/text-scramble'
 export function ShuffleTerminals() {
   const [copiedCommand, setCopiedCommand] = useState<string | null>(null)
   const [activeOrder, setActiveOrder] = useState([0, 1, 2])
+  const [hasClickedCommand, setHasClickedCommand] = useState(false)
 
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text)
     setCopiedCommand(text)
+    setHasClickedCommand(true)
     setTimeout(() => setCopiedCommand(null), 2000)
   }
 
@@ -67,7 +69,7 @@ export function ShuffleTerminals() {
       commands: [
         {
           label: "Copy environment file",
-          command: "cp .env.example .env",
+          command: "cp envExample.txt .env",
           output: null,
           isEnvFile: false
         },
@@ -76,14 +78,10 @@ export function ShuffleTerminals() {
           command: "# Add your credentials to .env",
           output: [
             "BETTER_AUTH_SECRET=your_secret_here",
-            "BETTER_AUTH_URL=http://localhost:3002",
-            "NEXT_PUBLIC_APP_URL=http://localhost:3002",
-            "",
-            "# Social auth (optional)",
-            "GOOGLE_CLIENT_ID=your_google_id",
-            "GOOGLE_CLIENT_SECRET=your_google_secret",
-            "GITHUB_CLIENT_ID=your_github_id",
-            "GITHUB_CLIENT_SECRET=your_github_secret"
+            "BETTER_AUTH_URL=http://localhost:3000",
+            "SUPABASE_URL=https://your-project.supabase.co",
+            "SUPABASE_SERVICE_ROLE_KEY=your_service_role_key",
+            "DATABASE_URL=postgresql://postgres.your-project:[PASSWORD]@aws-0-region.pooler.supabase.com:6543/postgres"
           ],
           isEnvFile: true
         }
@@ -95,7 +93,7 @@ export function ShuffleTerminals() {
       commands: [
         {
           label: "Generate database",
-          command: "pnpm drizzle:generate",
+          command: "pnpm drizzle-kit generate",
           output: [
             "🔧 Generating SQL migration...",
             "✓ Migration created at /drizzle/0001_init.sql"
@@ -104,7 +102,7 @@ export function ShuffleTerminals() {
         },
         {
           label: "Push to database",
-          command: "pnpm drizzle:push",
+          command: "pnpm drizzle-kit push",
           output: [
             "🚀 Pushing to database...",
             "✓ Tables created successfully",
@@ -117,10 +115,11 @@ export function ShuffleTerminals() {
           command: "pnpm dev",
           output: [
             "> supabetter@0.1.0 dev",
-            "> next dev -p 3002",
+            "> next dev --turbopack",
             "",
+            "⚡ Turbopack enabled",
             "▲ Next.js 15.2.4",
-            "- Local: http://localhost:3002",
+            "- Local: http://localhost:3000",
             "✓ Ready in 2.1s"
           ],
           isEnvFile: false
@@ -249,7 +248,7 @@ export function ShuffleTerminals() {
                           )}
                         </div>
                         
-                        {cmd.output && isActive && (
+                        {cmd.output && isActive && hasClickedCommand && (
                           <div className="ml-4 pl-3 border-l-2 border-muted-foreground/20 space-y-1">
                             {cmd.output.map((line, lineIndex) => (
                               <div
